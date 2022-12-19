@@ -1,5 +1,5 @@
 import { combineReducers, configureStore} from '@reduxjs/toolkit';
-import { userLoginReducer, userRegisterReducer, userDetailsReducer } from './redux/reducers/userReducer';
+import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userDeleteReducer, userListReducer, userUpdateReducer } from './redux/reducers/userReducer';
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
@@ -14,6 +14,10 @@ const store = configureStore({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
+    userUpdateProfile: userUpdateProfileReducer,
+    userList: userListReducer,
+    userDelete: userDeleteReducer,
+    userUpdate: userUpdateReducer,
     
   }),
   initialState,

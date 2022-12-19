@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
@@ -7,13 +7,13 @@ import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { login } from '../redux/actions/userActions';
 
-const LoginScreen = ({ history }) => {
+const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-  const location = useLocation()
-  console.log('location.search', location.search);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
@@ -22,13 +22,13 @@ const LoginScreen = ({ history }) => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      // history.push(redirect);
+      navigate(redirect);
     }
-  }, [history, userInfo, redirect]);
+  }, [navigate, userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(email, password);
     dispatch(login(email, password));
   };
 

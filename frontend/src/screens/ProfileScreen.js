@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import { getUserDetails, updateUserProfile } from '../actions/userActions';
-import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import React, { useState, useEffect } from 'react'
+import { Form, Button, Row, Col } from 'react-bootstrap'
+
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import { getUserDetails, updateUserProfile } from '../redux/actions/userActions'
+// import { listMyOrders } from '../actions/orderActions'
+import { USER_UPDATE_PROFILE_RESET } from '../redux/constants/userConstants'
+import { useNavigate } from 'react-router-dom'
 
 const ProfileScreen = ({ location, history }) => {
   const [email, setEmail] = useState('');
@@ -14,11 +17,13 @@ const ProfileScreen = ({ location, history }) => {
   const [lastName, setLastName] = useState('')
   const [message, setMessage] = useState(null);
 
+  const navigate = useNavigate()
+
   const dispatch = useDispatch();
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
-
+  console.log('userDetails: ', userDetails);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -27,18 +32,18 @@ const ProfileScreen = ({ location, history }) => {
 
   useEffect(() => {
     if (!userInfo) {
-      history.push('/login');
+      navigate('/login');
     } else {
       if (!user || !user.firstName ||!user.lastName || success) {
         dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails('profile'));
       } else {
         setFirstName(user.firstName);
-        setLastName(user.LastName);
+        setLastName(user.lastName);
         setEmail(user.email);
       }
     }
-  }, [dispatch, history, userInfo, user, success]);
+  }, [dispatch, navigate, userInfo, user, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -62,20 +67,20 @@ const ProfileScreen = ({ location, history }) => {
           <Message variant="danger">{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="name">
+            <Form.Group controlId="firstName">
               <Form.Label>First Name</Form.Label>
               <Form.Control
-                type="name"
+                type="firstName"
                 placeholder="Enter First Name"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="name">
+            <Form.Group controlId="lastName">
               <Form.Label>Last Name</Form.Label>
               <Form.Control
-                type="name"
+                type='lastName'
                 placeholder="Enter Last Name"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
