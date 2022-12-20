@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button, Row, Col } from 'react-bootstrap'
-
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../redux/actions/userActions'
-// import { listMyOrders } from '../actions/orderActions'
 import { USER_UPDATE_PROFILE_RESET } from '../redux/constants/userConstants'
 import { useNavigate } from 'react-router-dom'
 
@@ -59,7 +57,6 @@ const ProfileScreen = ({ location, history }) => {
       <Col md={3}>
         <h2>User Profile</h2>
         {message && <Message variant="danger">{message}</Message>}
-        {}
         {success && <Message variant="success">Profile Updated</Message>}
         {loading ? (
           <Loader />
