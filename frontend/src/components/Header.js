@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="light" expand="lg" collapseOnSelect>
+      <Navbar bg="primary" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to={'/'}>
             <Navbar.Brand className="border-0">LullaPay</Navbar.Brand>
