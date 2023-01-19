@@ -3,18 +3,40 @@ import { Row, Col, Stack, Container, Card } from 'react-bootstrap';
 import bgImage from '../images/pexels-abby-chung-1134000.jpg';
 
 const HeroSection = () => {
+  const sectionStyle = {
+    backgroundImage: `url(${bgImage})`,
+    height: '100vh',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  };
 
   return (
-    
-    <Card className="bg-light text-primary text-center py-auto">
-      <Card.Img src={bgImage} alt="Background image from Abby Chung" />
-      <Card.ImgOverlay className='my-auto'>
-        <Card.Title className='display-1'>LullaPay</Card.Title>
-        <Card.Text>Connecting Parents and Daycare Providers with easy payment solutions</Card.Text>
-      </Card.ImgOverlay>
-    </Card>
+    <Container fluid>
+      <Row d-flex justify-content-center align-items-center vh-100>
+        <Col>
+          <Row className="align-items-center">
+            <Col
+              md="5"
+              className="d-none d-md-block "
+              style={sectionStyle}
+            ></Col>
+            <Col md="7">
+              <Container className='justify-items-center w-75 text-center' >
+                <h1 className=" text-dark text-align-middle">
+                  Welcome to LullaPay
+                </h1>
+                <p>
+                  Connecting Parents and Daycare Providers with easy payment
+                  solutions
+                </p>
+              </Container>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
 export default HeroSection;
-

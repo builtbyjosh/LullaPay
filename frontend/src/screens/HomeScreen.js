@@ -8,7 +8,7 @@ import HeroSection from '../components/HeroSection';
 const HomeScreen = () => {
   return (
     <>
-      <div className="h-100 m-5">
+      <div className="h-100 ">
         <HeroSection />
       </div>
     </>
