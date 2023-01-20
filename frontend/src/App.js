@@ -3,10 +3,10 @@ import { Routes, Route } from 'react-router-dom';
 // import { Container } from 'react-bootstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomeScreen from './screens/HomeScreen';
-import LoginScreen from './screens/LoginScreen';
-import RegisterScreen from './screens/RegisterScreen';
-import ProfileScreen from './screens/ProfileScreen';
+import HomeScreen from './pages/HomeScreen/HomeScreen';
+import LoginScreen from './pages/LoginScreen';
+import RegisterScreen from './pages/RegisterScreen';
+import ProfileScreen from './pages/ProfileScreen';
 
 function App() {
   return (

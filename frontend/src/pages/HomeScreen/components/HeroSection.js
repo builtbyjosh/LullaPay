@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col, Container, Button } from 'react-bootstrap';
-import bgImage from '../images/pexels-abby-chung-1134000.jpg';
+import bgImage from '../../../images/pexels-abby-chung-1134000.jpg';
 
-const HeroSection = () => {
+const HeroSection = ({ handleSectionScroll }) => {
   const sectionStyle = {
     backgroundImage: `url(${bgImage})`,
     height: '100vh',
@@ -24,9 +24,8 @@ const HeroSection = () => {
               Connecting Parents and Daycare Providers with easy payment
               solutions
             </p>
-          <Button>More Info</Button>
+            <Button onClick={() => handleSectionScroll('infoSection')}>More Info</Button>
           </Container>
-
         </Col>
       </Row>
     </Container>
