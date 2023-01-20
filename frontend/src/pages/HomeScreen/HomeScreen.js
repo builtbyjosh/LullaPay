@@ -3,6 +3,7 @@ import { Row, Col, Stack, Container } from 'react-bootstrap';
 import DaycareInfo from './components/DaycareInfo';
 import HeroSection from './components/HeroSection';
 import ParentInfo from './components/ParentInfo';
+import ImageAndSvgDisplay from '../../components/ImageAndSvgDisplay';
 
 const HomeScreen = () => {
   const infoRef = useRef(null);
@@ -20,11 +21,12 @@ const HomeScreen = () => {
     <>
       <div className="h-100 ">
         <HeroSection handleSectionScroll={handleSectionScroll} />
-        <div id='infoSection'>
+        <div id='infoSection' className='ps-5'>
           <DaycareInfo />
           <ParentInfo />
         </div>
       </div>
+      {/* <ImageAndSvgDisplay /> */}
     </>
   );
 };
