@@ -20,7 +20,7 @@ const store = configureStore({
     userUpdate: userUpdateReducer,
     
   }),
-  initialState,
+  preloadedState: initialState,
 });
 
 export default store;
