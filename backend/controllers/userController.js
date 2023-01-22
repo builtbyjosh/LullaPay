@@ -71,6 +71,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       lastName: user.lastName,
       email: user.email,
       isAdmin: user.isAdmin,
+      isDaycare: user.isDaycare
     })
   } else {
     res.status(404)
@@ -97,6 +98,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       lastName: updatedUser.lastName,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      isDaycare: user.isDaycare,
       token: generateToken(updatedUser._id),
     });
   } else {
@@ -161,6 +163,7 @@ const updateUser = asyncHandler(async (req, res) => {
       lastName: updatedUser.lastName,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      isDaycare: user.isDaycare,
       token: generateToken(updatedUser._id),
     });
   } else {
