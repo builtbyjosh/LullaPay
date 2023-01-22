@@ -1,22 +1,15 @@
 import React from 'react';
 import { Row, Col, Container, Button, Image } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import bgImage from '../../../images/pexels-abby-chung-1134000.jpg';
 import plaground from '../../../images/playground-svgrepo-com.svg';
 
 const HeroSection = ({ handleSectionScroll }) => {
-  const sectionStyle = {
-    backgroundImage: `url(${bgImage})`,
-    height: '100vh',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-  };
 
+  const navigate = useNavigate()
   return (
     <Container fluid className={'bg-success '} style={{background: 'linear-gradient(180deg, rgba(120,194,173,1) 30%, rgba(255,255,255,1) 100%)'}}>
       <Row className="d-flex justify-content-center pt-5 vh-100">
-        {/* <Col md="5" className="d-none d-md-block " style={sectionStyle}></Col> */}
-
         <Col md="6" className="ps-5">
           <Row className="align-content-center h-100">
             <Col className="ps-5">
@@ -28,8 +21,15 @@ const HeroSection = ({ handleSectionScroll }) => {
               <Button
                 variant="warning"
                 onClick={() => handleSectionScroll('infoSection')}
+                className='mx-1'
               >
                 More Info
+              </Button>
+              <Button
+                variant="warning"
+                onClick={() => navigate('/login')}
+              >
+                Login
               </Button>
             </Col>
           </Row>
