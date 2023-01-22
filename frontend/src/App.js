@@ -4,9 +4,12 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomeScreen from './pages/HomeScreen/HomeScreen';
+
+import DaycareSignup from './pages/SignUpScreen/DaycareSignup';
+import ParentSignup from './pages/SignUpScreen/ParentSignup';
+import DaycareDashboard from './pages/DashboardScreen/DaycareDashboard';
+import ParentDashboard from './pages/DashboardScreen/ParentDashboard';
 import LoginScreen from './pages/LoginScreen/LoginScreen';
-import RegisterScreen from './pages/SignUpScreen/RegisterScreen';
-import ProfileScreen from './pages/ProfileScreen';
 
 function App() {
   return (
@@ -15,8 +18,14 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={<RegisterScreen />} />
-        <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="/daycare">
+          <Route path="signup" element={<DaycareSignup />} />
+          <Route path=":id" element={<DaycareDashboard />} />
+        </Route>
+        <Route path="/parent">
+          <Route path="signup" element={<ParentSignup />} />
+          <Route path=":id" element={<ParentDashboard />} />
+        </Route>
       </Routes>
       {/* <Footer /> */}
     </>
