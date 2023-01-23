@@ -4,7 +4,6 @@ import { Button, Form, Col, Row, Container } from 'react-bootstrap';
 import axios from 'axios';
 
 const ParentSignup = () => {
-
   const {
     register,
     handleSubmit,
@@ -12,9 +11,8 @@ const ParentSignup = () => {
     formState: { errors },
   } = useForm();
 
-
   const onSubmit = handleSubmit(async (data) => {
-
+    console.log('FORM DATA: ', data);
     let signupData = {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -22,15 +20,34 @@ const ParentSignup = () => {
       password: data.password,
     };
 
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
     try {
-      console.log(signupData);
-      const { data } = await axios({
+      console.log('signupData: ', signupData);
+      await axios({
         method: 'post',
-        url: '/api/users',
-        data: signupData,
-        headers: {'Content-Type': 'application/json'}
+        url: 'http://localhost:5000/api/users/',
+        data: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          password: data.password,
+        },
+        // headers: { 'Content-Type': 'application/json' },
+        config
+      }).then((res) => {
+        console.log('RES: ', res);
       });
-      console.log(data)
+      // const {data} = await axios.post(
+      //   'http://localhost:5000/api/users',
+      //   signupData,
+      //   config
+      // )
+      console.log('axios data', data);
     } catch (error) {
       console.error(error);
     }

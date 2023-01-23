@@ -6,6 +6,7 @@ import userRoutes from './routes/userRoutes.js'
 import kidRoutes from './routes/kidRoutes.js'
 import daycareRoutes from './routes/daycareRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import cors from 'cors'
 
 dotenv.config();
 
@@ -14,7 +15,7 @@ connectDB();
 const app = express();
 
 app.use(express.json())
-
+app.use(cors())
 app.get('/', (req, res) => {
   res.send('api is running...');
 });
