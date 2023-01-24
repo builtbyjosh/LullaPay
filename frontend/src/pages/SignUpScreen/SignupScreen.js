@@ -116,9 +116,7 @@ const SignupScreen = () => {
                   {...register('isDaycareProvider')}
                 />
                 <Form.Label>
-                  {isDaycare
-                    ? 'You will be prompted to create your Daycare on the next screen'
-                    : 'You will be able to register your children on the next screen'}
+                  You will be able to register your {isDaycare ? 'Daycare': 'Child'} on the next screen
                 </Form.Label>
               </Form.Group>
 
