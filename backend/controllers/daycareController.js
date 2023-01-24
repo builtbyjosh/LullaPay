@@ -24,4 +24,54 @@ const getDaycareById = asyncHandler(async (req, res) => {
   res.json(daycare);
 });
 
-export { getDaycareById, getDaycares };
+// @desc Register New Daycare
+// @route POST /api/daycares
+// @access Public
+const registerDaycare = asyncHandler(async (req, res) => {
+  const {
+    user,
+    daycareName,
+    streetAddress,
+    city,
+    state,
+    zipCode,
+    phone,
+    email,
+  } = req.body;
+
+  const userExists = await Daycare.findOne({ email: email });
+  if (userExists) {
+    res.status(400);
+    throw new Error('Daycare already exists');
+  }
+
+  const daycare = await Daycare.create({
+    user,
+    daycareName,
+    streetAddress,
+    city,
+    state,
+    zipCode,
+    phone,
+    email,
+  });
+
+  if (daycare) {
+    res.status(201).json({
+      _id: user._id,
+      daycareName: user.daycareName,
+      streetAddress: user.streetAddress,
+      city: user.city,
+      state: user.state,
+      zipCode: user.zipCode,
+      phone: user.phone,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error('Invalid User Data');
+  }
+});
+
+export { getDaycareById, getDaycares, registerDaycare };

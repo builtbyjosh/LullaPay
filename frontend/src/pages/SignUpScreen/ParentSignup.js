@@ -30,7 +30,7 @@ const ParentSignup = () => {
       console.log('signupData: ', signupData);
       await axios({
         method: 'post',
-        url: 'http://localhost:5000/api/users/',
+        url: '/api/users',
         data: {
           firstName: data.firstName,
           lastName: data.lastName,

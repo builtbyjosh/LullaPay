@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import DaycareSignup from './DaycareSignup';
 import ParentSignup from './ParentSignup';
-import { Form, Container } from 'react-bootstrap';
+import { Form, Container  } from 'react-bootstrap';
 
 const SignupScreen = () => {
   const [isDaycare, setIsDaycare] = useState(false);
@@ -11,7 +11,7 @@ const SignupScreen = () => {
   return (
     <div>
       <Form>
-        <Form.Check
+        <Form.Switch
           type="switch"
           label={switchText}
           onClick={()=>setIsDaycare(!isDaycare)}

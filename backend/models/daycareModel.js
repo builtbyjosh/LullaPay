@@ -23,7 +23,7 @@ const daycareSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    zip: {
+    zipCode: {
       type: Number,
       required: true,
     },
