@@ -11,7 +11,7 @@ const SignupForm = ({ isDaycare }) => {
     getValues,
     formState: { errors },
   } = useForm();
-
+  const navigate = useNavigate()
   const onSubmit = handleSubmit(async (data) => {
     let signupData = {
       firstName: data.firstName,
@@ -28,6 +28,7 @@ const SignupForm = ({ isDaycare }) => {
         data: signupData,
       }).then((res) => {
         console.log('RES: ', res);
+        navigate('/dashboard', {state: {user_info: res.data}})
       });
     } catch (error) {
       console.error(error);
