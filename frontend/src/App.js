@@ -7,18 +7,21 @@ import HomeScreen from './pages/HomeScreen/HomeScreen';
 import LoginScreen from './pages/LoginScreen/LoginScreen';
 import SignupScreen from './pages/SignUpScreen/SignupScreen';
 import DashboardScreen from './pages/DashboardScreen/DashboardScreen';
+import { UserProvider } from './context/UserContext';
 
 function App() {
   return (
     <>
-      {/* <Header /> */}
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/login" element={<LoginScreen />} />
-        <Route path="/signup" element={<SignupScreen />} />
-        <Route path="/dashboard" element={<DashboardScreen />} />
-      </Routes>
-      {/* <Footer /> */}
+      <UserProvider>
+        {/* <Header /> */}
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/signup" element={<SignupScreen />} />
+          <Route path="/dashboard" element={<DashboardScreen />} />
+        </Routes>
+        {/* <Footer /> */}
+      </UserProvider>
     </>
   );
 }
