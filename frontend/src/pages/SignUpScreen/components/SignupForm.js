@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../../../context/UserContext';
 
 const SignupForm = ({ isDaycare }) => {
+  const user_context = useContext(UserContext)
   const {
     register,
     handleSubmit,
@@ -28,6 +30,7 @@ const SignupForm = ({ isDaycare }) => {
         data: signupData,
       }).then((res) => {
         console.log('RES: ', res);
+        user_context.setUserInfo(res.data)
         navigate('/dashboard', {state: {user_info: res.data}})
       });
     } catch (error) {

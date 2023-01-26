@@ -3,28 +3,22 @@ import { Row, Col, Stack, Container } from 'react-bootstrap';
 import DaycareInfo from './components/DaycareInfo';
 import HeroSection from './components/HeroSection';
 import ParentInfo from './components/ParentInfo';
-import ImageAndSvgDisplay from '../../components/ImageAndSvgDisplay';
+
 import UserContext from '../../context/UserContext';
 import { get_user_info } from '../../api/userApi';
 
 const HomeScreen = () => {
+  const user_context = useContext(UserContext);
 
-
-  const { user_info } = useContext(UserContext);
-  console.log('USER INFO: ', user_info);
-  const storedUserInfo = window.localStorage.getItem('userInfo');
-  console.log('STORED USER INFO: ', storedUserInfo);
-
+  const set_user_info = async () => {
+    let userInfo = await get_user_info();
+    console.log('user_info', userInfo);
+    user_context.setUserInfo(userInfo);
+  };
 
   useEffect(() => {
-    if (!user_info._id) {
-      get_user_info(JSON.parse(storedUserInfo));
-    }
-
-  }, [storedUserInfo, user_info]);
-
-
-
+    set_user_info();
+  }, []);
 
   const handleSectionScroll = (sectionName) => {
     console.log(sectionName);

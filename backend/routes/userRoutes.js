@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   authUser,
+  getUserById,
   getUserProfile,
   getUsers,
   registerUser,
@@ -17,5 +18,7 @@ router
   .route('/profile')
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
+
+router.route('/:id').get(protect, getUserById)
 
 export default router;
