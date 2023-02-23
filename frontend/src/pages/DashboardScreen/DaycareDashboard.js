@@ -2,7 +2,7 @@ import React from 'react'
 
 const DaycareDashboard = () => {
   return (
-    <div>DaycareDashboard</div>
+    <div>DaycareDashboard Info</div>
   )
 }
 
